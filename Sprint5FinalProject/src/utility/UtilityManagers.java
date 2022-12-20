@@ -7,8 +7,8 @@ import service.TaskManager;
 
 public class UtilityManagers {
 
-    public static TaskManager getManager(){
-        return new InMemoryTaskManager();
+    public static TaskManager getManager(HistoryManager historyManager){
+        return new InMemoryTaskManager(historyManager);
     }
 
     public static HistoryManager getHistoryManager(){

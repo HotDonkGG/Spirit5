@@ -15,8 +15,13 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Long, Epic> epics = new HashMap<>(); // Создаю мап для эпиков: ключ(id), значение(эпик)
     private final Map<Long, Task> tasks = new HashMap<>();
     private final Map<Long, SubTask> subTasks = new HashMap<>();
-    private final LinkedList<Task> history = new LinkedList<>();
-    private HistoryManager historyManager = UtilityManagers.getHistoryManager();
+    final LinkedList<Task> history = new LinkedList<>();
+
+    private HistoryManager historyManager;
+
+    public InMemoryTaskManager(HistoryManager historyManager) {
+        this.historyManager = historyManager;
+    }
 
     @Override
     public List<Epic> getAllEpic() {
