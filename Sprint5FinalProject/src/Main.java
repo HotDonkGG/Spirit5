@@ -25,9 +25,6 @@ public class Main {
         epic1.getSubTaskList().add(subTask11);
         epic1.getSubTaskList().add(subTask10);
 
-        //System.out.println(epic1);
-
-        //System.out.print(historyManager.getHistory());
         taskManager.addTask(task1);
         taskManager.addTask(task2);
         taskManager.addTask(task3);
@@ -44,15 +41,5 @@ public class Main {
         System.out.println(historyManager.getHistory());
         historyManager.remove(1);
         System.out.println(historyManager.getHistory());
-
-//        System.out.println(taskManager.getAllEpic());
-//
-//        System.out.println(subTask11);
-//        System.out.println(subTask12);
-//        System.out.println(subTask11);
-//
-//        System.out.println();
-
-
     }
 }
