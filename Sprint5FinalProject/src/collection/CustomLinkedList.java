@@ -4,7 +4,7 @@ import model.Task;
 
 import java.util.*;
 
-public class CustomLinkedList { //перенёс
+public class CustomLinkedList { //перенёс, написал кастомлинкедлист, касаемо ноды не увидел в тз где она должна быть
 
     private Map<Long, Integer> map = new HashMap(); //изменил модификаторы доступа
 
