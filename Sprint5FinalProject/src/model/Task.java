@@ -1,17 +1,21 @@
 package model;
 
 public class Task {
-    private Long id;
-    private String name;
-    private String description;
-    private TaskStatus status;
+    protected Long id;
+    protected String name;
+    protected String description;
+    protected TaskStatus status;
+    protected TaskType taskType;
 
-    public Task(String name, String description, TaskStatus status) {
+    public Task(Long id, TaskType taskType, String name, TaskStatus status, String description) {
+        this.id = id;
+        this.taskType = taskType;
         this.name = name;
-        this.description = description;
         this.status = status;
+        this.description = description;
     }
 
+    //Task(id, type, name, status, description);
     public Long getId() {
         return id;
     }
@@ -46,11 +50,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                '}' + '\n';
+        return id + ","
+                + taskType + ","
+                + name + ","
+                + status + ','
+                + description;
     }
 }

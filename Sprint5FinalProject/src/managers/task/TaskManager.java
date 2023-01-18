@@ -1,4 +1,4 @@
-package service;
+package managers.task;
 
 import model.Epic;
 import model.SubTask;
@@ -48,5 +48,4 @@ public interface TaskManager {
     void updateTask(Task task);
 
     List<SubTask> getAllSubtaskByEpic(Epic epic);
-
 }

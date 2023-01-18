@@ -7,11 +7,14 @@ import java.util.Objects;
 public class Epic extends Task {
 
     private List<SubTask> subTaskList;
+    protected Epic EpicType;
 
-    public Epic(String name, String description) {
-        super(name, description, TaskStatus.IN_PROGRESS);
+    public Epic(Long id, TaskType taskType, String name, TaskStatus status, String description) {
+        super(id, taskType, name, status, description);
         subTaskList = new ArrayList<>();
     }
+
+
 
     public List<SubTask> getSubTaskList() {
         return subTaskList;
@@ -23,9 +26,11 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
-                "subTaskList=" + subTaskList +
-                '}';
+        return id + ","
+                + taskType + ","
+                + name + ","
+                + status + ','
+                + description + "+"
+                + EpicType;
     }
-
 }

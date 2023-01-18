@@ -6,54 +6,42 @@ import java.util.*;
 
 public class CustomLinkedList { //перенёс, написал кастомлинкедлист, касаемо ноды не увидел в тз где она должна быть
 
-    private Map<Long, Integer> map = new HashMap(); //изменил модификаторы доступа
-
-    private List<Task> list = new LinkedList();
-
-    public void linkLast(Task task) {
-        Integer elementIndex = map.get(task.getId()); // есть ли элемент в списке
-        if (elementIndex == null) {
-            map.put(task.getId(), list.size());
-            list.add(task);
-        } else {
-            list.remove(elementIndex.intValue()); // нет, нельзя не приводить, т.к. не будет работать
-            list.add(task);
-            upDateMap();
-        }
-    }
-
-    private void upDateMap() {
-        map.clear();
-        for (int i = 0; i < list.size(); i++) {
-            Task task = list.get(i);
-            Long id = task.getId();
-            map.put(id, i);
-        }
-    }
+    private Node first;
+    private Node last;
 
     public List<Task> getTasks() {
-        return new ArrayList<>(list);
+        List<Task> tasks = new ArrayList<>();
+        Node element = first;
+        while (element != null) {
+            tasks.add(element.getItem());
+            element = element.getNext();
+        }
+        return tasks;
     }
 
-    public void removeNode(Task task) {
-        Integer elementIndex = map.get(task.getId());
-        if (elementIndex != null) {
-            list.remove(elementIndex.intValue());
-            upDateMap();
+    public Node linkLast(Task task) {
+        Node newNode = new Node(task, null, last);
+        if (first == null) {
+            first = newNode;
+        } else {
+            last.setNext(newNode);
+        }
+        last = newNode;
+        return newNode;
+    }
+
+    public void removeNode(Node node) {
+        if (node.equals(first)) {
+            first = node.getNext();
+            if (node.getNext() != null) {
+                node.getNext().setPrev(null);
+            }
+        } else {
+            node.getPrev().setNext(node.getNext());
+            if (node.getNext() != null) {
+                node.getNext().setPrev(node.getPrev());
+            }
         }
     }
 
-    public void removeNode(Long id) {
-        Integer elementIndex = map.get(id);
-        if (elementIndex != null) {
-            list.remove(elementIndex.intValue());
-            upDateMap();
-        }
-    }
-
-    public void removeNode(int id) {
-        if (id < 0 || list.size() < id) return;
-        list.remove(id);
-        upDateMap();
-    }
 }

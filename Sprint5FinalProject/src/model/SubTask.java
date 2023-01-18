@@ -1,19 +1,27 @@
 package model;
 
-import java.util.LinkedList;
-
 public class SubTask extends Task {
-    private Epic epic;
+    private Long epicId;
 
-    public SubTask(String name, String description, TaskStatus status) {
-        super(name, description, status);
+    public SubTask(Long id, TaskType taskType, String name, TaskStatus status, String description, Long epicId) {
+        super(id, taskType, name, status, description);
+        this.epicId = epicId;
     }
 
-    public Epic getEpic() {
-        return epic;
+    public Long getEpicId() {
+        return epicId;
     }
 
-    public void setEpic(Epic epic) {
-        this.epic = epic;
+    public void setEpicId(Long epicId) {
+        this.epicId = epicId;
+    }
+
+    @Override
+    public String toString() {
+        return id + ","
+                + taskType + ","
+                + name + ","
+                + status + ','
+                + description;
     }
 }
