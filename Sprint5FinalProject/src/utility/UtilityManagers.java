@@ -10,13 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class UtilityManagers {
-    public static HistoryManager getHistoryManager() {
-        return new InMemoryHistoryManager();
-    }
-
-    public static FileBackedTasksManager getFileBackendManager(){
-        return new FileBackedTasksManager();
-    }
 
     public static Task taskFromString(String value) {
         String[] values = value.split(",");
